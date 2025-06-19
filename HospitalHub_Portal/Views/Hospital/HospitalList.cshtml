@@ -1,0 +1,310 @@
+﻿@{
+    ViewData["Title"] = "Hospitals";
+}
+
+<div class="main-render-content">
+    <div class="dashboard-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Hospital Management</h1>
+            <p class="page-description">Manage and monitor all registered hospitals</p>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+            <div class="action-left">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search hospitals...">
+                </div>
+            </div>
+            <div class="action-right">
+                <a href="@Url.Action("Create", "Hospital")" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Add New Hospital
+                </a>
+            </div>
+        </div>
+
+        <!-- Hospitals Grid -->
+        <div class="hospitals-grid">
+            <!-- Sample Hospital Card -->
+            <div class="hospital-card">
+                <div class="hospital-header">
+                    <div class="hospital-avatar">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="hospital-info">
+                        <h3 class="hospital-name">City General Hospital</h3>
+                        <p class="hospital-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            123 Main Street, Downtown
+                        </p>
+                    </div>
+                    <div class="hospital-status">
+                        <span class="status-badge status-active">Active</span>
+                    </div>
+                </div>
+
+                <div class="hospital-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Doctors</span>
+                        <span class="stat-value">45</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Departments</span>
+                        <span class="stat-value">12</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Beds</span>
+                        <span class="stat-value">200</span>
+                    </div>
+                </div>
+
+                <div class="hospital-actions">
+                    <a href="@Url.Action("Details", "Hospital", new { id = 1 })" class="btn btn-outline btn-sm">
+                        <i class="fas fa-eye"></i>
+                        View Details
+                    </a>
+                    <a href="@Url.Action("Edit", "Hospital", new { id = 1 })" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-edit"></i>
+                        Edit
+                    </a>
+                </div>
+            </div>
+
+            <!-- More hospital cards would be generated dynamically -->
+            <div class="hospital-card">
+                <div class="hospital-header">
+                    <div class="hospital-avatar">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="hospital-info">
+                        <h3 class="hospital-name">Metro Health Center</h3>
+                        <p class="hospital-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            456 Oak Avenue, Midtown
+                        </p>
+                    </div>
+                    <div class="hospital-status">
+                        <span class="status-badge status-active">Active</span>
+                    </div>
+                </div>
+
+                <div class="hospital-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Doctors</span>
+                        <span class="stat-value">32</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Departments</span>
+                        <span class="stat-value">8</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Beds</span>
+                        <span class="stat-value">150</span>
+                    </div>
+                </div>
+
+                <div class="hospital-actions">
+                    <a href="@Url.Action("Details", "Hospital", new { id = 2 })" class="btn btn-outline btn-sm">
+                        <i class="fas fa-eye"></i>
+                        View Details
+                    </a>
+                    <a href="@Url.Action("Edit", "Hospital", new { id = 2 })" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-edit"></i>
+                        Edit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Hospital Page Specific Styles */
+    .action-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .hospitals-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .hospital-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        animation: slideInUp 0.6s ease-out;
+    }
+
+        .hospital-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+    .hospital-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hospital-avatar {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .hospital-info {
+        flex: 1;
+    }
+
+    .hospital-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+    }
+
+    .hospital-location {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #6b7280;
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+        .hospital-location i {
+            color: #3b82f6;
+        }
+
+    .status-badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .status-active {
+        background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        color: #065f46;
+    }
+
+    .hospital-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: rgba(248, 250, 252, 0.5);
+        border-radius: 0.75rem;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-label {
+        display: block;
+        font-size: 0.75rem;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-value {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1f2937;
+    }
+
+    .hospital-actions {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        font-size: 0.875rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border: 2px solid transparent;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #3b82f6, #6366f1);
+        color: white;
+    }
+
+    .btn-outline {
+        background: transparent;
+        color: #374151;
+        border-color: #d1d5db;
+    }
+
+    .btn-secondary {
+        background: #6b7280;
+        color: white;
+    }
+
+    .btn-sm {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.8125rem;
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    {
+        grid-template-columns: 1fr;
+    }
+
+    .action-bar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hospital-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .hospital-actions {
+        flex-direction: column;
+    }
+
+    }
+</style>

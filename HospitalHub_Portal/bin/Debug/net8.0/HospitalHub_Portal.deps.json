@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "HospitalHub_Portal/1.0.0": {
+        "runtime": {
+          "HospitalHub_Portal.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HospitalHub_Portal/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

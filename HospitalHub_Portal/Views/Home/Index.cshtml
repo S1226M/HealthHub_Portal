@@ -1,0 +1,261 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+<main>
+
+<div class="main-render-content">
+    <div class="dashboard-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Dashboard</h1>
+            <p class="page-description">System overview and key metrics</p>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div id="dashboard-content" class="content-section">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card stat-card-blue">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <p class="stat-label">Total Hospitals</p>
+                            <p class="stat-value">24</p>
+                            <p class="stat-change">
+                                <i class="fas fa-trending-up"></i>
+                                +2 this month
+                            </p>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-card-green">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <p class="stat-label">Active Doctors</p>
+                            <p class="stat-value">342</p>
+                            <p class="stat-change">
+                                <i class="fas fa-trending-up"></i>
+                                +15 this week
+                            </p>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-card-purple">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <p class="stat-label">Total Users</p>
+                            <p class="stat-value">12,847</p>
+                            <p class="stat-change">
+                                <i class="fas fa-trending-up"></i>
+                                +234 this month
+                            </p>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-card-orange">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <p class="stat-label">Revenue</p>
+                            <p class="stat-value">$125,430</p>
+                            <p class="stat-change">
+                                <i class="fas fa-trending-up"></i>
+                                +18% this month
+                            </p>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Recent Appointments -->
+                <div class="card appointments-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Recent Appointments</span>
+                        </div>
+                        <p class="card-description">Latest appointment bookings and updates</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="appointment-list">
+                            <div class="appointment-item">
+                                <div class="appointment-info">
+                                    <div class="patient-avatar">SJ</div>
+                                    <div class="appointment-details">
+                                        <p class="patient-name">Sarah Johnson</p>
+                                        <p class="appointment-meta">Dr. Smith • City General Hospital</p>
+                                    </div>
+                                </div>
+                                <div class="appointment-status">
+                                    <div class="appointment-fee">$150</div>
+                                    <div class="appointment-time">2024-01-15 09:00</div>
+                                    <span class="status-badge status-scheduled">Scheduled</span>
+                                </div>
+                            </div>
+
+                            <div class="appointment-item">
+                                <div class="appointment-info">
+                                    <div class="patient-avatar">MB</div>
+                                    <div class="appointment-details">
+                                        <p class="patient-name">Michael Brown</p>
+                                        <p class="appointment-meta">Dr. Davis • Metro Health Center</p>
+                                    </div>
+                                </div>
+                                <div class="appointment-status">
+                                    <div class="appointment-fee">$200</div>
+                                    <div class="appointment-time">2024-01-15 10:30</div>
+                                    <span class="status-badge status-completed">Completed</span>
+                                </div>
+                            </div>
+
+                            <div class="appointment-item">
+                                <div class="appointment-info">
+                                    <div class="patient-avatar">EW</div>
+                                    <div class="appointment-details">
+                                        <p class="patient-name">Emily Wilson</p>
+                                        <p class="appointment-meta">Dr. Johnson • Central Medical</p>
+                                    </div>
+                                </div>
+                                <div class="appointment-status">
+                                    <div class="appointment-fee">$175</div>
+                                    <div class="appointment-time">2024-01-15 14:00</div>
+                                    <span class="status-badge status-cancelled">Cancelled</span>
+                                </div>
+                            </div>
+
+                            <div class="appointment-item">
+                                <div class="appointment-info">
+                                    <div class="patient-avatar">DM</div>
+                                    <div class="appointment-details">
+                                        <p class="patient-name">David Miller</p>
+                                        <p class="appointment-meta">Dr. Wilson • Health Plus Clinic</p>
+                                    </div>
+                                </div>
+                                <div class="appointment-status">
+                                    <div class="appointment-fee">$180</div>
+                                    <div class="appointment-time">2024-01-15 16:30</div>
+                                    <span class="status-badge status-in-progress">In Progress</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card quick-actions-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="fas fa-bolt"></i>
+                            <span>Quick Actions</span>
+                        </div>
+                        <p class="card-description">Common administrative tasks</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="quick-actions">
+                            <a href="@Url.Action("Index", "Hospital")" class="action-btn action-btn-blue">
+                                <i class="fas fa-building"></i>
+                                <span>Add New Hospital</span>
+                            </a>
+                            <a href="@Url.Action("Index", "Doctor")" class="action-btn action-btn-green">
+                                <i class="fas fa-stethoscope"></i>
+                                <span>Register Doctor</span>
+                            </a>
+                            <a href="@Url.Action("Index", "User")" class="action-btn action-btn-purple">
+                                <i class="fas fa-users"></i>
+                                <span>Manage Users</span>
+                            </a>
+                            <a href="@Url.Action("Index", "Appointment")" class="action-btn action-btn-orange">
+                                <i class="fas fa-calendar"></i>
+                                <span>View Appointments</span>
+                            </a>
+                            <a href="@Url.Action("Index", "Emergency")" class="action-btn action-btn-red">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Emergency Alerts</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Activity -->
+            <div class="card activity-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i class="fas fa-activity"></i>
+                        <span>System Activity</span>
+                    </div>
+                    <p class="card-description">Recent system events and notifications</p>
+                </div>
+                <div class="card-content">
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-dot activity-dot-green"></div>
+                            <div class="activity-content">
+                                <p class="activity-text">
+                                    New hospital registered: <span class="activity-highlight">Metro Health Center</span>
+                                </p>
+                                <p class="activity-time">2 hours ago</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-dot activity-dot-blue"></div>
+                            <div class="activity-content">
+                                <p class="activity-text">
+                                    Doctor profile updated: <span class="activity-highlight">Dr. Sarah Smith</span>
+                                </p>
+                                <p class="activity-time">4 hours ago</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-dot activity-dot-red"></div>
+                            <div class="activity-content">
+                                <p class="activity-text">
+                                    Emergency request resolved: <span class="activity-highlight">Patient #1234</span>
+                                </p>
+                                <p class="activity-time">6 hours ago</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-dot activity-dot-orange"></div>
+                            <div class="activity-content">
+                                <p class="activity-text">
+                                    Payment processed: <span class="activity-highlight">$250 consultation fee</span>
+                                </p>
+                                <p class="activity-time">8 hours ago</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-dot activity-dot-purple"></div>
+                            <div class="activity-content">
+                                <p class="activity-text">
+                                    New user registered: <span class="activity-highlight">John Anderson</span>
+                                </p>
+                                <p class="activity-time">12 hours ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>

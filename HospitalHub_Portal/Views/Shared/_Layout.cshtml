@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HospitalHub</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-icon">
+                <div class="heart-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="loading-ring"></div>
+            </div>
+            <div class="loading-text">
+                <h2 class="gradient-text">HospitalHub</h2>
+                <p>Loading your dashboard...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="main-container" class="main-container hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="logo-section">
+                        <div class="logo-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <span class="logo-text">HospitalHub</span>
+                        <span class="admin-badge">Admin</span>
+                    </div>
+                </div>
+
+                <div class="search-section">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search hospitals, doctors, patients..." class="search-input">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </button>
+                    <div class="user-menu">
+                        <div class="user-avatar">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <span class="user-name">System Admin</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Layout Container -->
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-content">
+                    <div class="mobile-close">
+                        <span>Navigation</span>
+                        <button class="close-btn" id="close-sidebar">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <nav class="sidebar-nav">
+                        <a class="nav-item asp-action="Index" asp-controller="Home">
+							<i class="fas fa-home"></i>
+							<span>Dashboard</span> 
+                        </a>
+                        <a class="nav-item" asp-action="HospitalList" asp-controller="Hospital">
+                            <i class="fas fa-building"></i>
+                            <span>Hospitals</span>
+                        </a>
+                        <a class="nav-item" asp-action="DoctorList" asp-controller="Doctor">
+                            <i class="fas fa-stethoscope"></i>
+                            <span>Doctors</span>
+                        </a>
+                        <a class="nav-item" asp-action="UserList" asp-controller="User">
+                            <i class="fas fa-users"></i>
+                            <span>Users</span>
+                        </a>
+                        <a class="nav-item" asp-action="AppointmentList" asp-controller="Appointment">
+                            <i class="fas fa-calendar"></i>
+                            <span>Appointments</span>
+                        </a>
+                        <a class="nav-item" asp-action="Index" asp-controller="Payment">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Payments</span>
+                        </a>
+                        <a class="nav-item" asp-action="Index" asp-controller="Emergency">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Emergency</span>
+                        </a>
+                        <a class="nav-item" asp-action="Index" asp-controller="Review">
+                            <i class="fas fa-star"></i>
+                            <span>Reviews</span>
+                        </a>
+                        <a class="nav-item" asp-action="Index" asp-controller="Prescription">
+                            <i class="fas fa-file-medical"></i>
+                            <span>Prescriptions</span>
+                        </a>
+                        <a class="nav-item" asp-action="Index" asp-controller="Setting">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </nav>
+                    <div class="system-status">
+                        <div class="status-title">System Status</div>
+                        <div class="status-indicator">
+                            <div class="status-dot"></div>
+                            <span>All Systems Operational</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Sidebar Overlay -->
+            <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+            <!-- Main Content Area -->
+        <div class="container">
+            @RenderBody()
+        </div>
+
+        </div>
+        
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="logo-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <span class="logo-text">HospitalHub</span>
+                        </div>
+                        <p class="footer-description">
+                            Comprehensive hospital management system designed to streamline healthcare operations and improve
+                            patient care across multiple hospitals and departments.
+                        </p>
+                        <div class="footer-buttons">
+                            <button class="footer-btn">Privacy Policy</button>
+                            <button class="footer-btn">Terms of Service</button>
+                        </div>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3 class="footer-title">Management</h3>
+                        <ul class="footer-links">
+                            <li><a href="@Url.Action("Index", "Hospital")" class="footer-link">Hospital Network</a></li>
+                            <li><a href="@Url.Action("Index", "Doctor")" class="footer-link">Doctor Directory</a></li>
+                            <li><a href="@Url.Action("Index", "User")" class="footer-link">User Management</a></li>
+                            <li><a href="@Url.Action("Index", "Appointment")" class="footer-link">Appointment System</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3 class="footer-title">Support</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" class="footer-link">Admin Help Center</a></li>
+                            <li><a href="#" class="footer-link">Technical Support</a></li>
+                            <li><a href="#" class="footer-link">System Status</a></li>
+                            <li><a href="#" class="footer-link">API Documentation</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p class="footer-copyright">© 2024 HospitalHub Admin Portal. All rights reserved.</p>
+                    <p class="footer-version">Database: Connected • Version 2.1.0</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/script.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,485 @@
+﻿@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="main-render-content">
+    <div class="dashboard-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">User Management</h1>
+            <p class="page-description">Manage system users, roles, and permissions</p>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-overview">
+            <div class="stat-card stat-card-blue">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Total Users</p>
+                        <p class="stat-value">12,847</p>
+                        <p class="stat-change">
+                            <i class="fas fa-trending-up"></i>
+                            +234 this month
+                        </p>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-card-green">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Active Users</p>
+                        <p class="stat-value">11,923</p>
+                        <p class="stat-change">
+                            <i class="fas fa-check-circle"></i>
+                            92.8% active
+                        </p>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-card-purple">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Admins</p>
+                        <p class="stat-value">45</p>
+                        <p class="stat-change">
+                            <i class="fas fa-shield-alt"></i>
+                            System admins
+                        </p>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-card-orange">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">New Today</p>
+                        <p class="stat-value">28</p>
+                        <p class="stat-change">
+                            <i class="fas fa-user-plus"></i>
+                            New registrations
+                        </p>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+            <div class="action-left">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search users by name, email, role...">
+                </div>
+                <div class="filter-container">
+                    <select class="filter-select" id="roleFilter">
+                        <option value="">All Roles</option>
+                        <option value="admin">Administrator</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="nurse">Nurse</option>
+                        <option value="patient">Patient</option>
+                        <option value="staff">Staff</option>
+                    </select>
+                </div>
+                <div class="filter-container">
+                    <select class="filter-select" id="statusFilter">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+                </div>
+            </div>
+            <div class="action-right">
+                <button class="btn btn-outline">
+                    <i class="fas fa-download"></i>
+                    Export Users
+                </button>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-upload"></i>
+                    Import Users
+                </button>
+                <a href="@Url.Action("Create", "User")" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Add New User
+                </a>
+            </div>
+        </div>
+
+        <!-- Users Table -->
+        <div class="users-table-container">
+            <div class="table-header">
+                <h3 class="table-title">
+                    <i class="fas fa-list"></i>
+                    User Directory
+                </h3>
+                <div class="table-actions">
+                    <button class="btn btn-sm btn-outline" id="toggleView">
+                        <i class="fas fa-th-large"></i>
+                        Grid View
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" class="select-all-checkbox">
+                            </th>
+                            <th>User</th>
+                            <th>Role</th>
+                            <th>Department</th>
+                            <th>Status</th>
+                            <th>Last Login</th>
+                            <th>Joined</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Sample User Row 1 -->
+                        <tr class="user-row">
+                            <td>
+                                <input type="checkbox" class="user-checkbox" data-user-id="1">
+                            </td>
+                            <td>
+                                <div class="user-info">
+                                    <div class="user-avatar">
+                                        <img src="/placeholder.svg?height=40&width=40" alt="John Anderson" class="avatar-img">
+                                        <div class="status-dot status-online"></div>
+                                    </div>
+                                    <div class="user-details">
+                                        <div class="user-name">John Anderson</div>
+                                        <div class="user-email">john.anderson@hospital.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="role-badge role-admin">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Administrator
+                                </span>
+                            </td>
+                            <td>
+                                <span class="department-text">IT Department</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-active">Active</span>
+                            </td>
+                            <td>
+                                <div class="last-login">
+                                    <span class="login-time">2 hours ago</span>
+                                    <span class="login-date">Dec 19, 2024</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="join-date">Jan 15, 2023</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn action-btn-view" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-edit" title="Edit User">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-permissions" title="Manage Permissions">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-more" title="More Options">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Sample User Row 2 -->
+                        <tr class="user-row">
+                            <td>
+                                <input type="checkbox" class="user-checkbox" data-user-id="2">
+                            </td>
+                            <td>
+                                <div class="user-info">
+                                    <div class="user-avatar">
+                                        <img src="/placeholder.svg?height=40&width=40" alt="Dr. Sarah Wilson" class="avatar-img">
+                                        <div class="status-dot status-away"></div>
+                                    </div>
+                                    <div class="user-details">
+                                        <div class="user-name">Dr. Sarah Wilson</div>
+                                        <div class="user-email">sarah.wilson@hospital.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="role-badge role-doctor">
+                                    <i class="fas fa-stethoscope"></i>
+                                    Doctor
+                                </span>
+                            </td>
+                            <td>
+                                <span class="department-text">Cardiology</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-active">Active</span>
+                            </td>
+                            <td>
+                                <div class="last-login">
+                                    <span class="login-time">1 day ago</span>
+                                    <span class="login-date">Dec 18, 2024</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="join-date">Mar 22, 2022</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn action-btn-view" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-edit" title="Edit User">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-permissions" title="Manage Permissions">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-more" title="More Options">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Sample User Row 3 -->
+                        <tr class="user-row">
+                            <td>
+                                <input type="checkbox" class="user-checkbox" data-user-id="3">
+                            </td>
+                            <td>
+                                <div class="user-info">
+                                    <div class="user-avatar">
+                                        <img src="/placeholder.svg?height=40&width=40" alt="Maria Garcia" class="avatar-img">
+                                        <div class="status-dot status-offline"></div>
+                                    </div>
+                                    <div class="user-details">
+                                        <div class="user-name">Maria Garcia</div>
+                                        <div class="user-email">maria.garcia@hospital.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="role-badge role-nurse">
+                                    <i class="fas fa-user-nurse"></i>
+                                    Nurse
+                                </span>
+                            </td>
+                            <td>
+                                <span class="department-text">Emergency</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-active">Active</span>
+                            </td>
+                            <td>
+                                <div class="last-login">
+                                    <span class="login-time">3 hours ago</span>
+                                    <span class="login-date">Dec 19, 2024</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="join-date">Aug 10, 2023</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn action-btn-view" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-edit" title="Edit User">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-permissions" title="Manage Permissions">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-more" title="More Options">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Sample User Row 4 -->
+                        <tr class="user-row">
+                            <td>
+                                <input type="checkbox" class="user-checkbox" data-user-id="4">
+                            </td>
+                            <td>
+                                <div class="user-info">
+                                    <div class="user-avatar">
+                                        <img src="/placeholder.svg?height=40&width=40" alt="Michael Chen" class="avatar-img">
+                                        <div class="status-dot status-online"></div>
+                                    </div>
+                                    <div class="user-details">
+                                        <div class="user-name">Michael Chen</div>
+                                        <div class="user-email">michael.chen@hospital.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="role-badge role-patient">
+                                    <i class="fas fa-user"></i>
+                                    Patient
+                                </span>
+                            </td>
+                            <td>
+                                <span class="department-text">-</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-inactive">Inactive</span>
+                            </td>
+                            <td>
+                                <div class="last-login">
+                                    <span class="login-time">2 weeks ago</span>
+                                    <span class="login-date">Dec 5, 2024</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="join-date">Nov 30, 2024</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn action-btn-view" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-edit" title="Edit User">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-permissions" title="Manage Permissions">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-more" title="More Options">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Sample User Row 5 -->
+                        <tr class="user-row">
+                            <td>
+                                <input type="checkbox" class="user-checkbox" data-user-id="5">
+                            </td>
+                            <td>
+                                <div class="user-info">
+                                    <div class="user-avatar">
+                                        <img src="/placeholder.svg?height=40&width=40" alt="Lisa Thompson" class="avatar-img">
+                                        <div class="status-dot status-away"></div>
+                                    </div>
+                                    <div class="user-details">
+                                        <div class="user-name">Lisa Thompson</div>
+                                        <div class="user-email">lisa.thompson@hospital.com</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="role-badge role-staff">
+                                    <i class="fas fa-clipboard"></i>
+                                    Staff
+                                </span>
+                            </td>
+                            <td>
+                                <span class="department-text">Reception</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-suspended">Suspended</span>
+                            </td>
+                            <td>
+                                <div class="last-login">
+                                    <span class="login-time">1 week ago</span>
+                                    <span class="login-date">Dec 12, 2024</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="join-date">Feb 14, 2023</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn action-btn-view" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-edit" title="Edit User">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-permissions" title="Manage Permissions">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button class="action-btn action-btn-more" title="More Options">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Bulk Actions Bar -->
+        <div class="bulk-actions-bar" id="bulkActionsBar" style="display: none;">
+            <div class="bulk-actions-left">
+                <span class="selected-count">0 users selected</span>
+            </div>
+            <div class="bulk-actions-right">
+                <button class="btn btn-sm btn-outline">
+                    <i class="fas fa-envelope"></i>
+                    Send Email
+                </button>
+                <button class="btn btn-sm btn-secondary">
+                    <i class="fas fa-ban"></i>
+                    Suspend
+                </button>
+                <button class="btn btn-sm btn-success">
+                    <i class="fas fa-check"></i>
+                    Activate
+                </button>
+                <button class="btn btn-sm btn-danger">
+                    <i class="fas fa-trash"></i>
+                    Delete
+                </button>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+            <div class="pagination-info">
+                Showing 1-10 of 12,847 users
+            </div>
+            <div class="pagination">
+                <button class="pagination-btn pagination-prev" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                    Previous
+                </button>
+                <button class="pagination-btn pagination-number active">1</button>
+                <button class="pagination-btn pagination-number">2</button>
+                <button class="pagination-btn pagination-number">3</button>
+                <span class="pagination-dots">...</span>
+                <button class="pagination-btn pagination-number">1285</button>
+                <button class="pagination-btn pagination-next">
+                    Next
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

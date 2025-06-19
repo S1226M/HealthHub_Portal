@@ -1,0 +1,360 @@
+﻿@{
+    ViewData["Title"] = "Doctors";
+}
+
+<div class="main-render-content">
+    <div class="dashboard-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Doctor Management</h1>
+            <p class="page-description">Manage and monitor all registered doctors</p>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-overview">
+            <div class="stat-card stat-card-blue">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Total Doctors</p>
+                        <p class="stat-value">342</p>
+                        <p class="stat-change">
+                            <i class="fas fa-trending-up"></i>
+                            +15 this month
+                        </p>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-card-green">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Available Today</p>
+                        <p class="stat-value">287</p>
+                        <p class="stat-change">
+                            <i class="fas fa-check-circle"></i>
+                            Currently active
+                        </p>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-card-purple">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Specializations</p>
+                        <p class="stat-value">24</p>
+                        <p class="stat-change">
+                            <i class="fas fa-graduation-cap"></i>
+                            Different fields
+                        </p>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-card-orange">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Avg Rating</p>
+                        <p class="stat-value">4.8</p>
+                        <p class="stat-change">
+                            <i class="fas fa-star"></i>
+                            Patient reviews
+                        </p>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+            <div class="action-left">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search doctors by name, specialization...">
+                </div>
+                <div class="filter-container">
+                    <select class="filter-select">
+                        <option value="">All Specializations</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="orthopedics">Orthopedics</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="dermatology">Dermatology</option>
+                    </select>
+                </div>
+            </div>
+            <div class="action-right">
+                <button class="btn btn-outline">
+                    <i class="fas fa-download"></i>
+                    Export List
+                </button>
+                <a href="@Url.Action("Create", "Doctor")" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Add New Doctor
+                </a>
+            </div>
+        </div>
+
+        <!-- Doctors Grid -->
+        <div class="doctors-grid">
+            <!-- Sample Doctor Card 1 -->
+            <div class="doctor-card">
+                <div class="doctor-header">
+                    <div class="doctor-avatar">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Dr. Sarah Johnson" class="avatar-img">
+                        <div class="status-indicator status-online"></div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Sarah Johnson</h3>
+                        <p class="doctor-specialization">
+                            <i class="fas fa-heartbeat"></i>
+                            Cardiology
+                        </p>
+                        <div class="doctor-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.9 (127 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="doctor-status">
+                        <span class="status-badge status-available">Available</span>
+                    </div>
+                </div>
+
+                <div class="doctor-details">
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <span>City General Hospital</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span>9:00 AM - 5:00 PM</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>15 years experience</span>
+                    </div>
+                </div>
+
+                <div class="doctor-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Patients</span>
+                        <span class="stat-value">1,247</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Appointments</span>
+                        <span class="stat-value">23</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Success Rate</span>
+                        <span class="stat-value">98%</span>
+                    </div>
+                </div>
+
+                <div class="doctor-actions">
+                    <a href="@Url.Action("Details", "Doctor", new { id = 1 })" class="btn btn-outline btn-sm">
+                        <i class="fas fa-eye"></i>
+                        View Profile
+                    </a>
+                    <a href="@Url.Action("Schedule", "Doctor", new { id = 1 })" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-calendar"></i>
+                        Schedule
+                    </a>
+                    <a href="@Url.Action("Edit", "Doctor", new { id = 1 })" class="btn btn-primary btn-sm">
+                        <i class="fas fa-edit"></i>
+                        Edit
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sample Doctor Card 2 -->
+            <div class="doctor-card">
+                <div class="doctor-header">
+                    <div class="doctor-avatar">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Dr. Michael Chen" class="avatar-img">
+                        <div class="status-indicator status-busy"></div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Michael Chen</h3>
+                        <p class="doctor-specialization">
+                            <i class="fas fa-brain"></i>
+                            Neurology
+                        </p>
+                        <div class="doctor-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-text">4.7 (89 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="doctor-status">
+                        <span class="status-badge status-busy">In Surgery</span>
+                    </div>
+                </div>
+
+                <div class="doctor-details">
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <span>Metro Health Center</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span>8:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>12 years experience</span>
+                    </div>
+                </div>
+
+                <div class="doctor-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Patients</span>
+                        <span class="stat-value">892</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Appointments</span>
+                        <span class="stat-value">18</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Success Rate</span>
+                        <span class="stat-value">96%</span>
+                    </div>
+                </div>
+
+                <div class="doctor-actions">
+                    <a href="@Url.Action("Details", "Doctor", new { id = 2 })" class="btn btn-outline btn-sm">
+                        <i class="fas fa-eye"></i>
+                        View Profile
+                    </a>
+                    <a href="@Url.Action("Schedule", "Doctor", new { id = 2 })" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-calendar"></i>
+                        Schedule
+                    </a>
+                    <a href="@Url.Action("Edit", "Doctor", new { id = 2 })" class="btn btn-primary btn-sm">
+                        <i class="fas fa-edit"></i>
+                        Edit
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sample Doctor Card 3 -->
+            <div class="doctor-card">
+                <div class="doctor-header">
+                    <div class="doctor-avatar">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Dr. Emily Rodriguez" class="avatar-img">
+                        <div class="status-indicator status-offline"></div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3 class="doctor-name">Dr. Emily Rodriguez</h3>
+                        <p class="doctor-specialization">
+                            <i class="fas fa-child"></i>
+                            Pediatrics
+                        </p>
+                        <div class="doctor-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">5.0 (156 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="doctor-status">
+                        <span class="status-badge status-offline">Off Duty</span>
+                    </div>
+                </div>
+
+                <div class="doctor-details">
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <span>Children's Medical Center</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span>10:00 AM - 4:00 PM</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>8 years experience</span>
+                    </div>
+                </div>
+
+                <div class="doctor-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Patients</span>
+                        <span class="stat-value">654</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Appointments</span>
+                        <span class="stat-value">12</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Success Rate</span>
+                        <span class="stat-value">99%</span>
+                    </div>
+                </div>
+
+                <div class="doctor-actions">
+                    <a href="@Url.Action("Details", "Doctor", new { id = 3 })" class="btn btn-outline btn-sm">
+                        <i class="fas fa-eye"></i>
+                        View Profile
+                    </a>
+                    <a href="@Url.Action("Schedule", "Doctor", new { id = 3 })" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-calendar"></i>
+                        Schedule
+                    </a>
+                    <a href="@Url.Action("Edit", "Doctor", new { id = 3 })" class="btn btn-primary btn-sm">
+                        <i class="fas fa-edit"></i>
+                        Edit
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+            <div class="pagination-info">
+                Showing 1-12 of 342 doctors
+            </div>
+            <div class="pagination">
+                <button class="pagination-btn pagination-prev" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                    Previous
+                </button>
+                <button class="pagination-btn pagination-number active">1</button>
+                <button class="pagination-btn pagination-number">2</button>
+                <button class="pagination-btn pagination-number">3</button>
+                <span class="pagination-dots">...</span>
+                <button class="pagination-btn pagination-number">29</button>
+                <button class="pagination-btn pagination-next">
+                    Next
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
